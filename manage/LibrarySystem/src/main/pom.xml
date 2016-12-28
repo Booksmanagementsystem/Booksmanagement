@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ssr</groupId>
+  <artifactId>ssr</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<!-- 设置整个maven项目编码格式 -->
+		<project.build.surceEncoding>UTF-8</project.build.surceEncoding>
+		<!-- 配置控制台输出的编码格式，解决乱码 -->
+		<argLine>-Dfile.encoding=UTF-8</argLine>
+	</properties>
+
+	<!-- 配置maven的基本插件 -->
+	<build>
+		<plugins>
+			<!-- 配置mave编译插件，指定maven编译版本 -->
+			<plugin>
+				<!-- 编译插件的名称 -->
+				<artifactId>
+					maven-compiler-plugin
+				</artifactId>
+				<!-- 编译插件的配置信息 -->
+				<!-- 指定WebContent目录 -->
+				<configuration>
+					<target>1.8</target>
+					<source>1.8</source>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- maven打包插件，目的告诉maven在项目中的web模块的路径 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<!-- 指定web模块的路径信息 -->
+				<configuration>
+					<warSourceDirectory>web</warSourceDirectory>
+					<webXml>web\WEB-INF\web.xml</webXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- 添加依赖配置 -->
+	<dependencies>
+
+		<!-- junit -->
+		<dependency>
+			<!-- dependency里面指定需要依赖的项目或者jar文件的GAV坐标 -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+
+		<!-- servlet api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
+
+		<!-- 数据库驱动 -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0</version>
+		</dependency>
+
+		<!-- hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.0.11.Final</version>
+		</dependency>
+
+		<!-- 配置JPA -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.0.11.Final</version>
+		</dependency>
+
+		<!--配置c3p0连接池-->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>5.0.11.Final</version>
+		</dependency>
+	</dependencies>
+	<!-- 配置maven的常規屬性 -->
+	<properties>
+		<!-- 设置整个maven项目的编码格式 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- 配置控制台输出参数的编码格式，解决乱码 -->
+		<argLine>-Dfile.encoding=UTF-8</argLine>
+	</properties>
+</project>

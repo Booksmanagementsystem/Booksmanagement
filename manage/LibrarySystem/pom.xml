@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>zl.com</groupId>
+    <artifactId>LibrarySystem</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- 配置整个maven项目的常规属性 -->
+    <properties>
+        <!-- 配置整个maven项目的编码格式 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 配置控制台输出参数的编码格式，解决乱码 -->
+        <argLine>-Dfile.encoding=UTF-8</argLine>
+        <!-- 配置版本号，方便维护 -->
+        <junit.version>4.12</junit.version>
+        <servlet.version>3.0.1</servlet.version>
+        <hibernate.version>5.2.5.Fina</hibernate.version>
+        <struts2.version>2.3.31</struts2.version>
+        <spring4.version>4.3.4.RELEASE</spring4.version>
+    </properties>
+    <!-- 配置maven插件 -->
+    <build>
+        <plugins>
+            <!-- 配置maven编译插件，指定maven编译版本 -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!-- 编译插件的配置信息 -->
+                <configuration>
+                    <target>1.8</target>
+                    <source>1.8</source>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- 配置maven打包插件，插件也是一个maven项目
+            目的告诉maven在项目中的web模块的路径
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <warSourceDirectory>web</warSourceDirectory>
+                    <webXml>web\WEB-INF\web.xml</webXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+        </dependency>
+        <!-- struts2依赖 -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.5.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.2.5.Final</version>
+        </dependency>
+        <!-- spring4.x -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.3.4.RELEASE</version>
+        </dependency>
+    </dependencies>
+
+</project>
